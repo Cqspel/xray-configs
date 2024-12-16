@@ -14,7 +14,15 @@ This repository contains configuration templates and examples for setting up [Xr
 - **bash**: Used to run the installation script
 
 ### Installation
-Use the provided `debian_12_install.sh` script to install Xray and automatically replace the placeholders in the configuration file:
+1. Clone the repository:
+   ```bash
+   apt-get update
+   apt-get install git
+   mkdir /tmp/xray && cd /tmp/xray
+   git clone https://github.com/Cqspel/xray-configs.git && cd xray-configs
+   ```
+
+2. Use the provided `debian_12_install.sh` script to install Xray and automatically replace the placeholders in the configuration file:
    ```bash
    ./debian_12_install.sh
    ```
