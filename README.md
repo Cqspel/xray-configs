@@ -16,6 +16,7 @@ This repository contains configuration templates and examples for setting up [Xr
 ### Installation
 1. Clone the repository:
    ```bash
+   mkdir ~/xray && cd ~/xray
    git clone https://github.com/Cqspel/xray-configs.git
    cd xray-configs
    ```

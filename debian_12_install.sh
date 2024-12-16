@@ -36,6 +36,7 @@ git clone https://github.com/Cqspel/xray-configs.git
 
 # Edit the Xray server config
 configFile="/usr/local/etc/xray/config.json"
+cp ~/xray/xray-configs/config.template.json $configFile
 sed -i "s|{{client_id}}|$clientID|g" "$configFile"
 sed -i "s|{{private_key}}|$privateKey|g" "$configFile"
 sed -i "s|{{short_id}}|$shortID|g" "$configFile"
