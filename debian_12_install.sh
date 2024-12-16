@@ -13,9 +13,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Install prerequisites
+apt-get update
 apt-get install -y aptitude
 aptitude update
-aptitude install -y vim htop curl
+aptitude install -y vim htop curl git
 
 # Install Xray
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)"
@@ -32,6 +33,7 @@ echo "  Public key: $publicKey"
 
 # Download Xray config templates
 mkdir -p ~/xray && cd ~/xray/
+rm -rf xray-configs
 git clone https://github.com/Cqspel/xray-configs.git
 
 # Edit the Xray server config
@@ -45,7 +47,7 @@ sed -i "s|{{short_id}}|$shortID|g" "$configFile"
 systemctl restart xray
 
 # Check Xray service status
-echo "\n####################xray-server##################"
+echo "####################xray-server##################"
 status=$(systemctl is-active xray)
 if [ "$status" == "active" ]; then
   echo "Xray service is running successfully."
@@ -54,8 +56,8 @@ else
 fi
 
 # Print summary
-echo "\n#################################################"
-echo "\nInstallation completed."
+echo "#################################################"
+echo "Installation completed."
 echo "Details:"
 echo "  Client ID: $clientID"
 echo "  Short ID: $shortID"
