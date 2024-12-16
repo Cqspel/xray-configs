@@ -15,7 +15,7 @@ fi
 # Install prerequisites
 apt-get install -y aptitude
 aptitude update
-aptitude install -y vim htop curl wget git
+aptitude install -y vim htop curl
 
 # Install Xray
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)"

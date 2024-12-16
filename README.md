@@ -10,9 +10,8 @@ This repository contains configuration templates and examples for setting up [Xr
 ## Getting Started
 
 ### Prerequisites
-- A server running a compatible Linux distribution (e.g., Debian 12)
-- [Xray Core](https://github.com/XTLS/Xray-core) installed
-- Basic knowledge of configuring proxy servers
+- **git**: Required to clone this repository
+- **bash**: Used to run the installation script
 
 ### Installation
 1. Clone the repository:
