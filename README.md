@@ -39,6 +39,40 @@ This repository contains configuration templates and examples for setting up [Xr
 - **macOS**: Use [FoXray](https://github.com)
 - **iOS**: Use [Shadowrocket](https://apps.apple.com)
 
+### Client Configuration Recommendations
+1. **General Settings:**
+   - Address: The IP of your host
+   - Port: `443`
+   - UUID: `clientID`
+
+2. **Transport Settings:**
+   - Type: `grpc`
+   - Host: Empty
+   - Service Name: `/`
+
+3. **TLS Settings:**
+   - TLS: `true`
+   - SNI: `www.yahoo.com`
+   - ECH: Empty
+   - ALPN: Empty
+   - Public key: `publicKey`
+   - Short ID: `shortID`
+   - Fragment: `off`
+
+4. **Advanced Settings:**
+   - Muxing: `false`
+   - TCP Fast Open: `false`
+   - UDP Relay: `off`
+
+### Suggested Rules for Clients
+1. **General Rules:**
+   - SKIP Proxy: `*.ru`
+
+2. **Rule:**
+   - Type: `GEOIP`
+   - Policy: `DIRECT`
+   - Country/Area: `RU`
+
 ## Contribution
 Contributions are welcome! To add or improve templates, follow these steps:
 1. Fork the repository
@@ -52,3 +86,4 @@ For issues or questions, feel free to open an issue in this repository or consul
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
