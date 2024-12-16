@@ -1,0 +1,108 @@
+{
+    "log":
+    {
+        "access": "/var/log/xray/access.log",
+        "error": "/var/log/xray/error.log",
+        "loglevel": "warning"
+    },
+    "dns":
+    {
+        "servers":
+        [
+            "https+local://1.1.1.1/dns-query",
+            "https+local://8.8.8.8/dns-query",
+            "localhost"
+        ]
+    },
+    "inbounds":
+    [
+        {
+            "listen": "0.0.0.0",
+            "port": 443,
+            "protocol": "vless",
+            "tag": "inbound-vless",
+            "settings":
+            {
+                "decryption": "none",
+                "clients":
+                [
+                    {
+                        "id": "{{client_id}}",
+                        "flow": ""
+                    }
+                ]
+            },
+            "streamSettings":
+            {
+                "network": "grpc",
+                "security": "reality",
+                "realitySettings":
+                {
+                    "show": false,
+                    "dest": "www.yahoo.com:443",
+                    "xver": 0,
+                    "serverNames":
+                    [
+                        "www.yahoo.com",
+                        "news.yahoo.com"
+                    ],
+                    "privateKey": "{{private_key}}",
+                    "fingerprint": "safari",
+                    "shortIds":
+                    [
+                        "{{short_id}}"
+                    ]
+                },
+                "grpcSettings":
+                {
+                    "serviceName": ""
+                }
+            }
+        }
+    ],
+    "outbounds":
+    [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ],
+    "routing":
+    {
+        "domainStrategy": "IPIfNonMatch",
+        "rules":
+        [
+            {
+                "ruleTag": "block-private",
+                "outboundTag": "block",
+                "domain": [
+                    "geoip:private"
+                ]
+            },
+            {
+                "ruleTag": "block-ads",
+                "outboundTag": "block",
+                "domain": [
+                    "geosite:category-ads-all"
+                ]
+            },
+            {
+                "ruleTag": "block-region-ru",
+                "outboundTag": "block",
+                "domain": [
+                    "geosite:category-ru",
+                    "geoip:ru"
+                ]
+            },
+            {
+                "ruleTag": "allow-direct",
+                "network": "tcp,udp",
+                "outboundTag": "direct"
+            }
+        ]
+    }
+}
