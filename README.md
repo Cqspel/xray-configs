@@ -43,7 +43,7 @@ This repository contains configuration templates and examples for setting up [Xr
 1. **General Settings:**
    - Address: The IP of your host
    - Port: `443`
-   - UUID: `clientID`
+   - UUID: `{{client_id}}`
 
 2. **Transport Settings:**
    - Type: `grpc`
@@ -55,8 +55,8 @@ This repository contains configuration templates and examples for setting up [Xr
    - SNI: `www.yahoo.com`
    - ECH: Empty
    - ALPN: Empty
-   - Public key: `publicKey`
-   - Short ID: `shortID`
+   - Public key: `{{public_key}}`
+   - Short ID: `{{short_id}}`
    - Fragment: `off`
 
 4. **Advanced Settings:**
@@ -72,6 +72,9 @@ This repository contains configuration templates and examples for setting up [Xr
    - Type: `GEOIP`
    - Policy: `DIRECT`
    - Country/Area: `RU`
+
+## Tested Configuration
+This configuration has been tested with **Xray 24.11.30** to ensure compatibility and functionality.
 
 ## Contribution
 Contributions are welcome! To add or improve templates, follow these steps:
