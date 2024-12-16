@@ -45,6 +45,7 @@ sed -i "s|{{short_id}}|$shortID|g" "$configFile"
 systemctl restart xray
 
 # Check Xray service status
+echo "\n####################xray-server##################"
 status=$(systemctl is-active xray)
 if [ "$status" == "active" ]; then
   echo "Xray service is running successfully."
@@ -53,6 +54,7 @@ else
 fi
 
 # Print summary
+echo "\n#################################################"
 echo "\nInstallation completed."
 echo "Details:"
 echo "  Client ID: $clientID"
